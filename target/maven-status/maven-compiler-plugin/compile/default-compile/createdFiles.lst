@@ -1,0 +1,8 @@
+com/igormeta/model/Game.class
+com/igormeta/model/H2Database.class
+com/igormeta/additional/Additional.class
+com/igormeta/controllerServlet/BullCowServletListener.class
+com/igormeta/model/GameMoves.class
+com/igormeta/controllerServlet/DispatcherServlet.class
+com/igormeta/model/User.class
+com/igormeta/model/RatingUsers.class

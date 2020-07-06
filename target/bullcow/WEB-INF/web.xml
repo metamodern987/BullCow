@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd
+http://java.sun.com/xml/ns/javaee "
+         version="2.5">
+
+    <!-- Дескриптор развёртывания-->
+
+
+    <context-param>
+        <param-name>dbDriver</param-name>
+        <param-value>org.h2.Driver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbUrl</param-name>
+        <param-value>jdbc:h2:mem:${webroot}WEB-INF/db/testdb</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbUserName</param-name>
+        <param-value>sa</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbPassword</param-name>
+        <param-value>""</param-value>
+    </context-param>
+
+    <!-- Класс-слушатель событий-->
+    <listener>
+        <listener-class>com.igormeta.controllerServlet.BullCowServletListener</listener-class>
+    </listener>
+
+    <!-- Имя и класс сервлета -->
+    <servlet>
+        <servlet-name>Controller</servlet-name>
+        <servlet-class>com.igormeta.controllerServlet.DispatcherServlet</servlet-class>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.png</url-pattern>
+    </servlet-mapping>
+
+    <!-- Основная страница -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- Cтраница для ошибки 404 -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/jsp/error.jsp</location>
+    </error-page>
+</web-app>
